@@ -6,8 +6,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
     req.query = {
         limit:'10',
-        sortBy: 'id',
-        sortDir: 'desc'
+        sortby: 'id',
+        sortdir: 'desc'
     }
     
    
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
       .from('accounts')
       
       .limit(req.query.limit)
-      .orderBy(req.query.sortBy, req.query.sortDir)
+      .orderBy(req.query.sortby, req.query.sortdir)
 
       .then(accounts => {
           res.status(200).json(accounts);
