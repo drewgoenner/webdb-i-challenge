@@ -5,13 +5,18 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     req.query = {
-        limit: 10,
-        sortby: "id",
-        sortdir: "desc"
-    };
+        limit:'10',
+        sortBy: 'id',
+        sortDir: 'desc'
+    }
+    
+   
     db.select('*')
       .from('accounts')
-      .options(req.query)
+      
+      .limit(req.query.limit)
+      .orderBy(req.query.sortBy, req.query.sortDir)
+
       .then(accounts => {
           res.status(200).json(accounts);
       })
