@@ -84,8 +84,6 @@ router.delete('/:id', (req, res) => {
 
 
 //Custom Middleware
-
-
 function validateAccount (req, res, next) {
     const account = req.body;
     if (!Object.keys(account).length) {
